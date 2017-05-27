@@ -13,11 +13,11 @@
 							<output value="Ok. And where would you like to go?" if="full($Text)"/>
 							
 							<input id="end_point" pattern="$Text">
-								<var name="endPoint" value="$Text" scope="context"/>
-								<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
-								<output value="Ok. What type of taxi you need?" if="full($Text)"/>
-
 								<context id="end_point_use" if="full($Text)">
+									<var name="endPoint" value="$Text" scope="context"/>
+									<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
+									<output value="Ok. What type of taxi you need?"/>
+
 									<pattern name="taxiType" value="(passenger|cargo)"/>
 									<input id="taxi_type" pattern="$taxiType">
 										<sample>
