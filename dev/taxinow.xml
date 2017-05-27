@@ -19,14 +19,13 @@
 									<output value="Ok. What type of taxi you need?"/>
 									
 									<pattern name="taxiType" value="(passenger|cargo)"/>
-										<input id="taxi_type" pattern="$taxiType"/>
+									<input id="taxi_type" pattern="$taxiType">
 										<var name="taxiType" value="$taxiType" scope="context"/>
 										<sample>
 											<item value="passenger"/>
 											<item value="cargo"/>
 										</sample>
-								</context>
-
+										
 										<context id="taxi_passenger" if="$taxiType == 'passenger'">
 											<output value="Will children with you?"/>
 											<pattern name="childrenAre" value="(yes|no)"/>
@@ -53,6 +52,8 @@
 												</context>
 											</input>
 										</context>
+									</input>
+								</context>
 
 										<context id="taxi_cargo" if="$taxiType == 'cargo'">
 											<output value="What type of truck you need?"/>
