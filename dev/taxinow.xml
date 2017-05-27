@@ -1,7 +1,7 @@
 <context>
 	<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
 	<input id="phone" pattern="/start $Text">
-	<var name="userPhoneNum" value="$Text" scope="context"/>
+		<var name="userPhoneNum" value="$Text" scope="context"/>
 
 		<context id="number_use" if="full($Text)">
 			<output value="Where are you?"/>
