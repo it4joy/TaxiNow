@@ -29,9 +29,9 @@
 										<item value="cargo"/>
 									</sample>
 									
-									<context id="taxi_passenger" if='$taxiTypeSel == "passenger"'>
+									
 									<output value="Your choice: $taxiTypeSel"/>
-									</context>
+									
 								</context>
 								
 								
