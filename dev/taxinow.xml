@@ -38,9 +38,9 @@
 											<var name="children" value="$childrenAre" scope="context"/>
 											<output value="How many and what is their age?"/>
 
-											<input pattern="$chldProp">
+											<input pattern="$Text">
 												<context>
-													<var name="childrenData" value="$chldProp" scope="context"/>
+													<var name="childrenData" value="$Text" scope="context"/>
 													<output value="$finMsg"/>
 												</context>
 											</input>
