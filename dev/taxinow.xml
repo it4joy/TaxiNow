@@ -32,8 +32,15 @@
 												<var name="childrenAreVal" value="$Text"/>
 
 												<context id="children_yes" if='$childrenAreVal == "y"'>
-													<output value="Response: $childrenAreVal"/>
+													<output value="How many and what is their age (for choice of auto chairs)?"/>
+
+													<input id="children_data" pattern="$Text">
+														<var name="childrenData" value="$Text"/>
+														<context id="final_msg"/>
+													</input>
 												</context>
+												
+												<context id="final_msg" if='$childrenAreVal == "n"'/>
 											</input>
 										</context>
 
@@ -50,6 +57,10 @@
 					</input>
 				</context>
 			</input>
+		</context>
+		
+		<context id="final_msg">
+			<output value="Thanks, I will send you a message with info about auto."/>
 		</context>
 	</input>
 </context>
