@@ -19,18 +19,20 @@
 								<var name="endPoint" value="$Text" scope="context"/>
 								
 								<context id="end_point_use" if="full($endPoint)">
-									<output value="Ok. What type of taxi you need?"/>
+									<output value="Ok. What type of taxi you need? Passenger - p, cargo - c"/>
 
-									<pattern name="taxiType" value="(passenger|cargo)"/>
-									<input id="taxi_type" pattern="* $taxiType"/>
-									<sample>
-										<item>passenger</item>
-										<item>cargo</item>
-									</sample>
-									<output value="Your choice - $taxiType"/>
+									<input id="taxi_type" pattern="(* p *|* с *)">
+										<var name="taxiTypeSel" value="$taxiType"/>
+										
+										<context id="taxi_passenger" if="$taxiTypeSel == 'passenger'">
+											<output value="Your choice is $taxiTypeSel"/>
+										</context>
+										
+										<context id="taxi_cargo" if="$taxiTypeSel == 'cargo'">
+											<output value="Your choice is $taxiTypeSel"/>
+										</context>
+									</input>
 								</context>
-								
-								
 							</input>
 						</context>
 					</input>
