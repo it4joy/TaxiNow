@@ -21,12 +21,12 @@
 								<context id="end_point_use" if="full($endPoint)">
 									<output value="Ok. What type of taxi you need?"/>
 
-									<input id="taxi_type" pattern="$Text"/>
+									<input id="taxi_type" pattern="* $taxiType"/>
 									<sample>
 										<item>passenger</item>
 										<item>cargo</item>
 									</sample>
-									<output value="Your choice - $Text"/>
+									<output value="Your choice - $taxiType"/>
 								</context>
 								
 								
