@@ -32,8 +32,8 @@
 											<input id="children_are" pattern="$childrenAre">
 												<var name="childrenAreVal" value="$childrenAre"/>
 
-												<context id="children_yes">
-													<output value="Children - yes"/>
+												<context id="children_yes" if='$childrenAreVal == "y"'>
+													<output value="Response: $childrenAreVal"/>
 												</context>
 											</input>
 										</context>
