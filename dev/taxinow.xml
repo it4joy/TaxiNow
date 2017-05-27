@@ -23,7 +23,7 @@
 
 									<pattern name="taxiType" value="(p|с)"/>
 									<input id="taxi_type" pattern="$taxiType">
-										<var name="taxiTypeSel" value="$taxiType"/>
+										<var name="taxiTypeSel" value="$taxiType" scope="context"/>
 										
 										<context id="taxi_passenger" if="$taxiTypeSel == 'p'">
 											<output value="Your choice is $taxiTypeSel"/>
