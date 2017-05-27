@@ -55,11 +55,12 @@
 								<context if="full($taxiType) and $taxiType == 'cargo'">
 									<output value="What type of truck you need?"/>
 									<sample>
-										<item value="before 1 tonne"/>
-										<item value="before 2 tonne"/>
-										<item value="before 3.5 tonne"/>
-										<item value="before 5 tonne"/>
+										<item value="< 1 tonne"/>
+										<item value="< 2 tonne"/>
+										<item value="< 3.5 tonne"/>
+										<item value="< 5 tonne"/>
 									</sample>
+									<pattern name="tonnageSel" value="(< 1 tonne|< 2 tonne|< 3.5 tonne|< 5 tonne)"/>
 									<input pattern="$tonnageSel">
 										<context>
 											<var name="tonnage" value="$tonnageSel" scope="context"/>
