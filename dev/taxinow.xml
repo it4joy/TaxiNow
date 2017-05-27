@@ -21,7 +21,13 @@
 								<context id="end_point_use" if="full($endPoint)">
 									<output value="Ok. What type of taxi you need?"/>
 									
-									
+									<pattern name="taxiType" value="(passenger|cargo)"/>
+									<input id="taxi_type" pattern="$taxiType"/>
+									<var name="taxiTypeSel" value="$taxiType" scope="context"/>
+									<sample>
+										<item value="passenger"/>
+										<item value="cargo"/>
+									</sample>
 								</context>
 							</input>
 						</context>
