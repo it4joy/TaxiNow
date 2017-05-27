@@ -20,15 +20,14 @@
 								
 								<context id="end_point_use" if="full($endPoint)">
 									<output value="Ok. What type of taxi you need?"/>
-									
-									<pattern name="taxiType" value="(passenger|cargo)"/>
+
 									<input id="taxi_type" pattern="$taxiType"/>
 									<sample>
 										<item value="passenger"/>
 										<item value="cargo"/>
 									</sample>
 
-									<output value="Your choice: $taxiTypeSel" if="$taxiType == 'passenger'"/>
+									<output value="Your choice: $taxiType" if="$taxiType == 'passenger'"/>
 								</context>
 								
 								
