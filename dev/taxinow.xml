@@ -23,7 +23,8 @@
 								<item value="passenger"/>
 								<item value="cargo"/>
 							</sample>
-							<input pattern="* $taxiType *">
+							<pattern name="taxiType" value="(passenger|cargo)"/>
+							<input pattern="$taxiType">
 								<context if="full($taxiType) and $taxiType == 'passenger'">
 									<var name="taxiType" value="$taxiType" scope="context"/>
 									<output value="Will children with you?"/>
