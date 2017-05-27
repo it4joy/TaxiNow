@@ -1,84 +1,17 @@
 <context>
-	<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
-	<input id="phone" pattern="$Number">
-		<var name="userPhoneNum" value="$Number" scope="user"/>
+    <input pattern="(hi|hello) *">
+        <!-- Greet the user if we know his/her name -->
+        <output value="Hello $UserName!" if="full($UserName)"/>
 
-		<context id="number-use" if="full($Number)">
-			<output value="Where are you?"/>
-			<input id="start-point" pattern="$Text">
-				<context id="start-point-use">
-					<var name="StartPoint" value="$Text" scope="context"/>
-					<output value="Ok. And where would you like to go?" if="full($Text)"/>
-					
-					<input id="end-point" pattern="$Text">
-						<var name="endPoint" value="$Text" scope="context"/>
-						<output value="Ok. What type of taxi you need?" if="full($Text)"/>
+        <!-- Or activate an inner context to ask the user about his/her name -->
+        <context if="empty($UserName)" modal="true"> <!-- We use a modal context, so our bot will recognize any text as the user’s name -->
+            <output value="Hi! What is your name?"/>
 
-						<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
-
-						<context id="end-point-use">
-							<sample>
-								<item value="passenger"/>
-								<item value="cargo"/>
-							</sample>
-							<pattern name="taxiType" value="(passenger|cargo)"/>
-							<input id="taxi-type" pattern="$taxiType">
-								<context id="taxi-passenger" if="full($taxiType) and $taxiType == 'passenger'">
-									<var name="taxiType" value="$taxiType" scope="context"/>
-									<output value="Will children with you?"/>
-									<sample>
-										<item value="yes"/>
-										<item value="no"/>
-									</sample>
-									<pattern name="childrenAre" value="(yes|no)"/>
-									<input id="children-are" pattern="$childrenAre">
-										<context id="children-yes" if="$childrenAre == 'yes'">
-											<var name="children" value="$childrenAre" scope="context"/>
-											<output value="How many and what is their age?"/>
-
-											<input id="children-data" pattern="$Text">
-												<context id="children-data-use">
-													<var name="childrenData" value="$Text" scope="context"/>
-													<output value="$finMsg"/>
-												</context>
-											</input>
-										</context>
-
-										<context id="children-no" if="$childrenAre == 'no'">
-											<output value="$finMsg"/>
-										</context>
-									</input>
-								</context>
-
-								<context id="taxi-cargo" if="full($taxiType) and $taxiType == 'cargo'">
-									<output value="What type of truck you need?"/>
-									<sample>
-										<item value="before 1 tonne"/>
-										<item value="before 2 tonne"/>
-										<item value="before 3.5 tonne"/>
-										<item value="before 5 tonne"/>
-									</sample>
-									<pattern name="tonnageSel" value="(before 1 tonne|before 2 tonne|before 3.5 tonne|before 5 tonne)"/>
-									<input id="cargo-tonnage" pattern="$tonnageSel">
-										<context id="cargo-tonnage-use">
-											<var name="tonnage" value="$tonnageSel" scope="context"/>
-											<output value="$finMsg"/>
-										</context>
-									</input>
-								</context>
-							</input>
-						</context>
-						
-						<context id="end-point-no" if="empty($Text)">
-							<output value="Where would you like to go?"/>
-						</context>
-					</input>
-				</context>
-
-				<context id="start-point-no" if="empty($Text)">
-					<output value="Please, write me where are you."/>
-				</context>
-			</input>
-		</context>
-	</input>
+            <input pattern="$Text">
+                <!-- Store the user’s name in the UserName variable with "user" scope to save it into database -->
+                <var name="UserName" value="$Text" scope="user"/>
+                <output value="Nice to meet you, $UserName!"/> <!-- Using the placeholder in output -->
+            </input>
+        </context>
+    </input>
 </context>
