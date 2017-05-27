@@ -22,12 +22,13 @@
 									<output value="Ok. What type of taxi you need?"/>
 
 									<input id="taxi_type" pattern="$Text"/>
+									<var name="taxiType" value="$Text"/>
 									<sample>
 										<item value="passenger"/>
 										<item value="cargo"/>
 									</sample>
 
-									<output value="Your choice: $Text" if="$Text == 'passenger'"/>
+									<output value="Your choice: $taxiType" if="$taxiType == 'passenger'"/>
 								</context>
 								
 								
