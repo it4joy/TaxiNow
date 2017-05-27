@@ -22,15 +22,16 @@
 									<output value="Ok. What type of taxi you need?"/>
 									
 									<pattern name="taxiType" value="(passenger|cargo)"/>
-									<input id="taxi_type" pattern="$taxiType"/>
+									<input id="taxi_type" pattern="$taxiType">
 									<var name="taxiTypeSel" value="$taxiType" scope="context"/>
 									<sample>
 										<item value="passenger"/>
 										<item value="cargo"/>
 									</sample>
+										<output value="Your choice: $taxiTypeSel" if="$taxiTypeSel == 'passenger'"/>
+									</input>
 									
 									
-									<output value="Your choice: $taxiTypeSel" if="$taxiTypeSel == 'passenger'"/>
 									
 								</context>
 								
