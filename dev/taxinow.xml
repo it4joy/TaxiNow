@@ -21,8 +21,7 @@
 								<context id="end_point_use" if="full($endPoint)">
 									<output value="Ok. What type of taxi you need? Passenger - p, cargo - c"/>
 
-									<pattern name="taxiType" value="(p|с)"/>
-									<input id="taxi_type" pattern="$taxiType">
+									<input id="taxi_type" pattern="(p|с)">
 										<var name="taxiTypeSel" value="$taxiType" scope="context"/>
 										
 										<context id="taxi_passenger" if="$taxiTypeSel == 'p'">
