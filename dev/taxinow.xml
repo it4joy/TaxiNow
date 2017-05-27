@@ -2,7 +2,7 @@
 	<input id="start_bot" pattern="/start $Text">
 	<context id="start_bot_use">
 		<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
-		<input id="phone" pattern="/start $Text">
+		<input id="phone" pattern="$Text">
 			<var name="userPhoneNum" value="$Text" scope="context"/>
 
 		<context id="number_use" if="full($Text)">
