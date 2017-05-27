@@ -1,5 +1,5 @@
 <context>
-	<pattern name="phoneNum" value="javascript: parseInt(this)"/>
+	<pattern name="phoneNum" value="javascript: parseInt(this.value)"/>
 	<input id="phone" pattern="$phoneNum">
 		<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
 		<var name="userPhoneNum" value="$phoneNum" scope="user"/>
