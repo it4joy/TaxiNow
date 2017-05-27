@@ -17,13 +17,12 @@
 						<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
 
 						<context id="end-point-use">
-							<pattern name="taxiType" value="(passenger|cargo)"/>
-							<input id="taxi-type" pattern="$taxiType"/>
 							<sample>
 								<item value="passenger"/>
 								<item value="cargo"/>
 							</sample>
-							
+							<pattern name="taxiType" value="(passenger|cargo)"/>
+							<input id="taxi-type" pattern="$taxiType"/>
 								<context id="taxi-passenger" if="full($taxiType) and $taxiType == 'passenger'">
 									<var name="taxiType" value="$taxiType" scope="context"/>
 									<output value="Will children with you?"/>
