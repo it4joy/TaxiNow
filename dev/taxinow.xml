@@ -25,7 +25,7 @@
 									
 									<pattern name="taxiType" value="(passenger|cargo)"/>
 									<input id="taxi_type" pattern="$taxiType">
-										<context id="taxi_passenger" if="full($taxiType) and $taxiType == 'passenger'">
+										<context id="taxi_passenger" if="$taxiType == 'passenger'">
 											<var name="taxiType" value="$taxiType" scope="context"/>
 											<output value="Will children with you?"/>
 											<pattern name="childrenAre" value="(yes|no)"/>
@@ -53,7 +53,7 @@
 											</input>
 										</context>
 
-										<context id="taxi_cargo" if="full($taxiType) and $taxiType == 'cargo'">
+										<context id="taxi_cargo" if="$taxiType == 'cargo'">
 											<output value="What type of truck you need?"/>
 											<pattern name="tonnageSel" value="(before 1 tonne|before 2 tonne|before 3.5 tonne|before 5 tonne)"/>
 											<input id="cargo_tonnage" pattern="$tonnageSel">
