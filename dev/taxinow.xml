@@ -7,7 +7,25 @@
 				<var name="userPhoneNum" value="$Text" scope="user"/>
 				
 				<context id="number_use" if="full($userPhoneNum)">
-					<output value="Your number is $userPhoneNum"/>
+					<output value="Where are you?"/>
+					
+					<input id="start_point" pattern="$Text">
+						<var name="startPoint" value="$Text" scope="context"/>
+						
+						<context id="start_point_use" if="full($startPoint)">
+							<output value="Ok. And where would you like to go?"/>
+							
+							<input id="end_point" pattern="$Text">
+								<var name="endPoint" value="$Text" scope="context"/>
+								
+								<context id="end_point_use" if="full($endPoint)">
+									<output value="Ok. What type of taxi you need?"/>
+									
+									
+								</context>
+							</input>
+						</context>
+					</input>
 				</context>
 			</input>
 		</context>
