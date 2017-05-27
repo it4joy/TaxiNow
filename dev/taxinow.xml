@@ -19,9 +19,9 @@
 								<var name="endPoint" value="$Text" scope="context"/>
 								
 								<context id="end_point_use" if="full($endPoint)">
-									<output value="Ok. What type of taxi you need? Type 'go'"/>
+									<output value="Ok. What type of taxi you need? Please, type any word"/>
 
-									<input id="taxi_type" pattern="go">
+									<input id="taxi_type" pattern="$Text">
 										<sample>
 											<item>passenger</item>
 											<item>cargo</item>
