@@ -17,21 +17,23 @@
 						<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
 
 						<context id="end_point_use">
-							<sample>
-								<item value="passenger"/>
-								<item value="cargo"/>
-							</sample>
 							<pattern name="taxiType" value="(passenger|cargo)"/>
 							<input id="taxi_type" pattern="$taxiType">
+								<sample>
+									<item value="passenger"/>
+									<item value="cargo"/>
+								</sample>
+
 								<context id="taxi_passenger" if="full($taxiType) and $taxiType == 'passenger'">
 									<var name="taxiType" value="$taxiType" scope="context"/>
 									<output value="Will children with you?"/>
-									<sample>
-										<item value="yes"/>
-										<item value="no"/>
-									</sample>
 									<pattern name="childrenAre" value="(yes|no)"/>
 									<input id="children_are" pattern="$childrenAre">
+										<sample>
+											<item value="yes"/>
+											<item value="no"/>
+										</sample>
+
 										<context id="children_yes" if="$childrenAre == 'yes'">
 											<var name="children" value="$childrenAre" scope="context"/>
 											<output value="How many and what is their age?"/>
@@ -52,14 +54,15 @@
 
 								<context id="taxi_cargo" if="full($taxiType) and $taxiType == 'cargo'">
 									<output value="What type of truck you need?"/>
-									<sample>
-										<item value="before 1 tonne"/>
-										<item value="before 2 tonne"/>
-										<item value="before 3.5 tonne"/>
-										<item value="before 5 tonne"/>
-									</sample>
 									<pattern name="tonnageSel" value="(before 1 tonne|before 2 tonne|before 3.5 tonne|before 5 tonne)"/>
 									<input id="cargo_tonnage" pattern="$tonnageSel">
+										<sample>
+											<item value="before 1 tonne"/>
+											<item value="before 2 tonne"/>
+											<item value="before 3.5 tonne"/>
+											<item value="before 5 tonne"/>
+										</sample>
+
 										<context id="cargo_tonnage_use">
 											<var name="tonnage" value="$tonnageSel" scope="context"/>
 											<output value="$finMsg"/>
