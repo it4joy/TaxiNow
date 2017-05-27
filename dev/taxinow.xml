@@ -32,6 +32,7 @@
 										<item value="yes"/>
 										<item value="no"/>
 									</sample>
+									<pattern name="childrenAre" value="(yes|no)"/>
 									<input pattern="$childrenAre">
 										<context if="$childrenAre == 'yes'">
 											<var name="children" value="$childrenAre" scope="context"/>
