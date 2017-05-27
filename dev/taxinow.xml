@@ -46,7 +46,7 @@
 
 										<!-- Taxi :: cargo -->
 										<context id="taxi_cargo" if='$taxiTypeSel == "c"'>
-											<output value="What type of truck you need?"/>
+											<output value="What type of truck you need? Type 'go'"/>
 											
 											<input pattern="*">
 												<sample>
