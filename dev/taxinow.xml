@@ -2,86 +2,12 @@
 	<input id="start_bot" pattern="/start $Text">
 		<context id="start_bot_use">
 			<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
+			
 			<input id="phone" pattern="$Text">
-				<var name="userPhoneNum" value="$Text" scope="context"/>
-
-				<context id="number_use" if="full($Text)">
-					<output value="Where are you?"/>
-					<input id="start_point" pattern="$Text">
-						<context id="start_point_use">
-							<var name="StartPoint" value="$Text" scope="context"/>
-							<output value="Ok. And where would you like to go?" if="full($Text)"/>
-							
-							<input id="end_point" pattern="$Text">
-								<context id="end_point_use" if="full($Text)">
-									<var name="endPoint" value="$Text" scope="context"/>
-									<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
-									<output value="Ok. What type of taxi you need?"/>
-									
-									<pattern name="taxiType" value="(passenger|cargo)"/>
-									<input id="taxi_type" pattern="$taxiType"/>
-									<var name="taxiType" value="$taxiType" scope="context"/>
-									<sample>
-										<item value="passenger"/>
-										<item value="cargo"/>
-									</sample>
-								</context>
-
-										<context id="taxi_passenger" if='$taxiType == "passenger"'>
-											<output value="Will children with you?"/>
-											<pattern name="childrenAre" value="(yes|no)"/>
-											<input id="children_are" pattern="$childrenAre">
-												<sample>
-													<item value="yes"/>
-													<item value="no"/>
-												</sample>
-
-												<context id="children_yes" if="$childrenAre == 'yes'">
-													<var name="children" value="$childrenAre" scope="context"/>
-													<output value="How many and what is their age?"/>
-
-													<input id="children_data" pattern="$Text">
-														<context id="children-data-use">
-															<var name="childrenData" value="$Text" scope="context"/>
-															<output value="$finMsg"/>
-														</context>
-													</input>
-												</context>
-
-												<context id="children_no" if="$childrenAre == 'no'">
-													<output value="$finMsg"/>
-												</context>
-											</input>
-										</context>
-
-										<context id="taxi_cargo" if="$taxiType == 'cargo'">
-											<output value="What type of truck you need?"/>
-											<pattern name="tonnageSel" value="(before 1 tonne|before 2 tonne|before 3.5 tonne|before 5 tonne)"/>
-											<input id="cargo_tonnage" pattern="$tonnageSel">
-												<sample>
-													<item value="before 1 tonne"/>
-													<item value="before 2 tonne"/>
-													<item value="before 3.5 tonne"/>
-													<item value="before 5 tonne"/>
-												</sample>
-
-												<context id="cargo_tonnage_use">
-													<var name="tonnage" value="$tonnageSel" scope="context"/>
-													<output value="$finMsg"/>
-												</context>
-											</input>
-										</context>
-								
-								<!-- <context id="end_point_no" if="empty($Text)">
-									<output value="Where would you like to go?"/>
-								</context> -->
-							</input>
-						</context>
-
-						<!-- <context id="start_point_no" if="empty($Text)">
-							<output value="Please, write me where are you."/>
-						</context> -->
-					</input>
+				<var name="userPhoneNum" value="$Text" scope="user"/>
+				
+				<context id="number_use" if="full($userPhoneNum)">
+					<output value="Your number is $userPhoneNum"/>
 				</context>
 			</input>
 		</context>
