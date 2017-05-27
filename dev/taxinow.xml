@@ -1,9 +1,9 @@
 <context>
-	<input id="phone" pattern="/start $Number">
+	<input id="phone" pattern="/start $Text">
 		<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
-		<var name="userPhoneNum" value="$Number" scope="user"/>
+		<var name="userPhoneNum" value="$Text" scope="user"/>
 
-		<context id="number-use" if="full($Number)">
+		<context id="number-use" if="full($Text)">
 			<output value="Where are you?"/>
 			<input id="start-point" pattern="$Text">
 				<context id="start-point-use">
@@ -17,12 +17,13 @@
 						<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
 
 						<context id="end-point-use">
+							<pattern name="taxiType" value="(passenger|cargo)"/>
+							<input id="taxi-type" pattern="$taxiType"/>
 							<sample>
 								<item value="passenger"/>
 								<item value="cargo"/>
 							</sample>
-							<pattern name="taxiType" value="(passenger|cargo)"/>
-							<input id="taxi-type" pattern="$taxiType">
+							
 								<context id="taxi-passenger" if="full($taxiType) and $taxiType == 'passenger'">
 									<var name="taxiType" value="$taxiType" scope="context"/>
 									<output value="Will children with you?"/>
@@ -66,7 +67,7 @@
 										</context>
 									</input>
 								</context>
-							</input>
+							
 						</context>
 						
 						<context id="end-point-no" if="empty($Text)">
