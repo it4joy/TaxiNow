@@ -8,66 +8,69 @@
 				<output value="Where are you?"/>
 				<var name="StartPoint" value="$Text" scope="context"/>
 				<output value="Ok. And where would you like to go?" if="full($Text)"/>
-				<input pattern="$Text">
-					<var name="endPoint" value="$Text" scope="context"/>
-					<ouput value="Ok. What type of taxi you need?" if="full($Text)"/>
 
-					<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
+				<context>
+					<input pattern="$Text">
+						<var name="endPoint" value="$Text" scope="context"/>
+						<ouput value="Ok. What type of taxi you need?" if="full($Text)"/>
 
-					<context>
-						<sample>
-							<item value="passenger"/>
-							<item value="cargo"/>
-						</sample>
-						<input pattern="* $taxiType *">
-							<context if="full($taxiType) and $taxiType == 'passenger'">
-								<var name="taxiType" value="$taxiType" scope="context"/>
-								<output value="Will children with you?"/>
-								<sample>
-									<item value="yes"/>
-									<item value="no"/>
-								</sample>
-								<input pattern="$childrenAre">
-									<context if="$childrenAre == 'yes'">
-										<var name="children" value="$childrenAre" scope="context"/>
-										<output value="How many and what is their age?"/>
+						<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
 
-										<input pattern="$chldProp">
-											<context>
-												<var name="childrenData" value="$chldProp" scope="context"/>
-												<output value="$finMsg"/>
-											</context>
-										</input>
-									</context>
+						<context>
+							<sample>
+								<item value="passenger"/>
+								<item value="cargo"/>
+							</sample>
+							<input pattern="* $taxiType *">
+								<context if="full($taxiType) and $taxiType == 'passenger'">
+									<var name="taxiType" value="$taxiType" scope="context"/>
+									<output value="Will children with you?"/>
+									<sample>
+										<item value="yes"/>
+										<item value="no"/>
+									</sample>
+									<input pattern="$childrenAre">
+										<context if="$childrenAre == 'yes'">
+											<var name="children" value="$childrenAre" scope="context"/>
+											<output value="How many and what is their age?"/>
 
-									<context if="$childrenAre == 'no'">
-										<output value="$finMsg"/>
-									</context>
-								</input>
-							</context>
+											<input pattern="$chldProp">
+												<context>
+													<var name="childrenData" value="$chldProp" scope="context"/>
+													<output value="$finMsg"/>
+												</context>
+											</input>
+										</context>
 
-							<context if="full($taxiType) and $taxiType == 'cargo'">
-								<output value="What type of truck you need?"/>
-								<sample>
-									<item value="before 1 tonne"/>
-									<item value="before 2 tonne"/>
-									<item value="before 3.5 tonne"/>
-									<item value="before 5 tonne"/>
-								</sample>
-								<input pattern="$tonnageSel">
-									<context>
-										<var name="tonnage" value="$tonnageSel" scope="context"/>
-										<output value="$finMsg"/>
-									</context>
-								</input>
-							</context>
-						</input>
-					</context>
-					
-					<context if="empty($epTxt)">
-						<output value="Where would you like to go?"/>
-					</context>
-				</input>
+										<context if="$childrenAre == 'no'">
+											<output value="$finMsg"/>
+										</context>
+									</input>
+								</context>
+
+								<context if="full($taxiType) and $taxiType == 'cargo'">
+									<output value="What type of truck you need?"/>
+									<sample>
+										<item value="before 1 tonne"/>
+										<item value="before 2 tonne"/>
+										<item value="before 3.5 tonne"/>
+										<item value="before 5 tonne"/>
+									</sample>
+									<input pattern="$tonnageSel">
+										<context>
+											<var name="tonnage" value="$tonnageSel" scope="context"/>
+											<output value="$finMsg"/>
+										</context>
+									</input>
+								</context>
+							</input>
+						</context>
+						
+						<context if="empty($epTxt)">
+							<output value="Where would you like to go?"/>
+						</context>
+					</input>
+				</context>
 
 				<context if="empty($spTxt)">
 					<output value="Please, write me where are you."/>
