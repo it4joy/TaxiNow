@@ -4,8 +4,8 @@
 		<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
 
 		<context>
-			<output value="Where are you?"/>
 			<input pattern="$spTxt">
+				<output value="Where are you?"/>
 				<var name="StartPoint" value="$spTxt" scope="context"/>
 				<output value="Ok. And where would you like to go?" if="full($spTxt)"/>
 				<input pattern="$epTxt">
