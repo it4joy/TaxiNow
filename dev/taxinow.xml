@@ -1,10 +1,11 @@
 <context>
-	<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
-	<input pattern="$Number"/>
-	<var name="userPhoneNum" value="$Number" scope="user"/>
+	<input pattern="$Number">
+		<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
+		<var name="userPhoneNum" value="$Number" scope="user"/>
+	</input>
 
-	<output value="Where are you?"/>
 	<input pattern="$spTxt">
+		<output value="Where are you?"/>
 		<var name="StartPoint" value="$spTxt" scope="context"/>
 		<output value="Ok. And where would you like to go?" if="full($spTxt)"/>
 		<input pattern="$epTxt">
