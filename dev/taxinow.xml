@@ -24,7 +24,7 @@
 									<input id="taxi_type" pattern="$Text">
 										<var name="taxiTypeSel" value="$Text" scope="context"/>
 										
-										<output value="Will children with you?" if="full($taxiTypeSel) and $taxiTypeSel == 'p'"/>
+										<output value="Will children with you?" if="$taxiTypeSel == 'p'"/>
 										
 										<!-- <context id="taxi_cargo" if="full($taxiTypeSel) and $taxiTypeSel == 'c'">
 											<output value="Your choice is $taxiTypeSel"/>
