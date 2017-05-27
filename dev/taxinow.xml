@@ -48,7 +48,13 @@
 										<context id="taxi_cargo" if='$taxiTypeSel == "c"'>
 											<output value="What type of truck you need?"/>
 											
-											
+											<input pattern="*"/>
+											<sample>
+												<item value="before 1 tonne"/>
+												<item value="before 2 tonne"/>
+												<item value="before 3.5 tonne"/>
+												<item value="before 5 tonne"/>
+											</sample>
 										</context>
 									</input>
 								</context>
