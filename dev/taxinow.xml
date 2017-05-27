@@ -3,18 +3,18 @@
 		<var name="userPhoneNum" value="$Number" scope="user"/>
 		<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
 
-		<context>
-			<input pattern="$spTxt">
+		<context if="full($Number)">
+			<input pattern="$Text">
 				<output value="Where are you?"/>
-				<var name="StartPoint" value="$spTxt" scope="context"/>
-				<output value="Ok. And where would you like to go?" if="full($spTxt)"/>
-				<input pattern="$epTxt">
+				<var name="StartPoint" value="$Text" scope="context"/>
+				<output value="Ok. And where would you like to go?" if="full($Text)"/>
+				<input pattern="$Text">
+					<var name="endPoint" value="$Text" scope="context"/>
+					<ouput value="Ok. What type of taxi you need?" if="full($Text)"/>
+
+					<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
+
 					<context>
-						<var name="endPoint" value="$epTxt" scope="context"/>
-						<ouput value="Ok. What type of taxi you need?" if="full($epTxt)"/>
-
-						<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
-
 						<sample>
 							<item value="passenger"/>
 							<item value="cargo"/>
