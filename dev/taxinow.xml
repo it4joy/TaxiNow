@@ -46,19 +46,13 @@
 
 										<!-- Taxi :: cargo -->
 										<context id="taxi_cargo" if='$taxiTypeSel == "c"'>
-											<output value="What type of truck you need?"/>
+											<output value="What type of truck you need? 1, 2, 3.5, 5 (tonne)"/>
 
-											<input/>
-											<sample>
-												<item value="before 1 tonne"/>
-												<item value="before 2 tonne"/>
-												<item value="before 3.5 tonne"/>
-												<item value="before 5 tonne"/>
-											</sample>
-											<var name="tonnage" value="*"/>
+											<input pattern="(1|2|3.5|5)">
+												<var name="tonnage" value="$Text"/>
+												<context id="final_msg"/>
+											</input>
 										</context>
-
-										<context id="final_msg"/>
 									</input>
 								</context>
 							</input>
