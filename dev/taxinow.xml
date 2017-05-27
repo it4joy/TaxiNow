@@ -5,9 +5,11 @@
 
 		<context if="full($Number)">
 			<input pattern="$Text">
-				<output value="Where are you?"/>
-				<var name="StartPoint" value="$Text" scope="context"/>
-				<output value="Ok. And where would you like to go?" if="full($Text)"/>
+				<context>
+					<output value="Where are you?"/>
+					<var name="StartPoint" value="$Text" scope="context"/>
+					<output value="Ok. And where would you like to go?" if="full($Text)"/>
+				</context>
 
 				<context>
 					<input pattern="$Text">
