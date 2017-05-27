@@ -27,8 +27,10 @@
 										<item>cargo</item>
 									</sample>
 									<var name="taxiTypeSel" value="$Text" scope="context"/>
-
-									<output value="Your choice" if="$Text == 'passenger'"/>
+									
+									<input id="type_passenger" if="$taxiTypeSel == 'passenger'">
+										<output value="Your choice - passenger taxi"/>
+									</input>
 								</context>
 								
 								
