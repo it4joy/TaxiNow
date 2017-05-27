@@ -1,4 +1,4 @@
-<context>	
+<context>
 	<input pattern="$Number">
 		<var name="userPhoneNum" value="$Number" scope="user"/>
 		<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
@@ -9,10 +9,10 @@
 				<var name="StartPoint" value="$spTxt" scope="context"/>
 				<output value="Ok. And where would you like to go?" if="full($spTxt)"/>
 				<input pattern="$epTxt">
-					<var name="endPoint" value="$epTxt" scope="context"/>
-					<ouput value="Ok. What type of taxi you need?" if="full($epTxt)"/>
-
 					<context>
+						<var name="endPoint" value="$epTxt" scope="context"/>
+						<ouput value="Ok. What type of taxi you need?" if="full($epTxt)"/>
+
 						<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
 
 						<sample>
@@ -20,22 +20,29 @@
 							<item value="cargo"/>
 						</sample>
 						<input pattern="* $taxiType *">
-							<var name="taxiType" value="$taxiType" scope="context"/>
-
 							<context if="full($taxiType) and $taxiType == 'passenger'">
+								<var name="taxiType" value="$taxiType" scope="context"/>
 								<output value="Will children with you?"/>
 								<sample>
 									<item value="yes"/>
 									<item value="no"/>
 								</sample>
 								<input pattern="$childrenAre">
-									<var name="children" value="$childrenAre" scope="context"/>
-									<output value="$finMsg" if="$childrenAre == 'no'"/>
-									<output value="How many and what is their age?" if="$childrenAre == 'yes'"/>
-									<input pattern="$chldProp">
-										<var name="childrenData" value="$chldProp" scope="context"/>
+									<context if="$childrenAre == 'yes'">
+										<var name="children" value="$childrenAre" scope="context"/>
+										<output value="How many and what is their age?"/>
+
+										<input pattern="$chldProp">
+											<context>
+												<var name="childrenData" value="$chldProp" scope="context"/>
+												<output value="$finMsg"/>
+											</context>
+										</input>
+									</context>
+
+									<context if="$childrenAre == 'no'">
 										<output value="$finMsg"/>
-									</input>
+									</context>
 								</input>
 							</context>
 
@@ -48,8 +55,10 @@
 									<item value="before 5 tonne"/>
 								</sample>
 								<input pattern="$tonnageSel">
-									<var name="tonnage" value="$tonnageSel" scope="context"/>
-									<output value="$finMsg"/>
+									<context>
+										<var name="tonnage" value="$tonnageSel" scope="context"/>
+										<output value="$finMsg"/>
+									</context>
 								</input>
 							</context>
 						</input>
