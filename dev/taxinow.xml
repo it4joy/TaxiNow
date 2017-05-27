@@ -55,6 +55,8 @@
 												<item value="before 3.5 tonne"/>
 												<item value="before 5 tonne"/>
 											</sample>
+											<var name="tonnage" value="*"/>
+											<context id="final_msg"/>
 										</context>
 									</input>
 								</context>
