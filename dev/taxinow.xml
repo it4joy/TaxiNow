@@ -14,7 +14,7 @@
 				<context>
 					<input pattern="$Text">
 						<var name="endPoint" value="$Text" scope="context"/>
-						<ouput value="Ok. What type of taxi you need?" if="full($Text)"/>
+						<output value="Ok. What type of taxi you need?" if="full($Text)"/>
 
 						<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
 
