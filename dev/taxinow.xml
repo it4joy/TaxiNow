@@ -30,7 +30,7 @@
 									</sample>
 									
 									
-									<output value="Your choice: $taxiTypeSel"/>
+									<output value="Your choice: $taxiTypeSel" if="$taxiTypeSel == 'passenger'"/>
 									
 								</context>
 								
