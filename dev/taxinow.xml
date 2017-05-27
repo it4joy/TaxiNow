@@ -1,10 +1,10 @@
 <context>
-	<input id="phone" pattern="$Number">
-		
-		
+	<pattern name="phoneNum" value="javascript: parseInt(this)"/>
+	<input id="phone" pattern="$phoneNum">
+		<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
+		<var name="userPhoneNum" value="$phoneNum" scope="user"/>
 
-		<context id="number-use" if="full($Number)">
-			<var name="userPhoneNum" value="$Number" scope="user"/>
+		<context id="number-use" if="full($phoneNum)">
 			<output value="Where are you?"/>
 			<input id="start-point" pattern="$Text">
 				<context id="start-point-use">
