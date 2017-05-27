@@ -18,15 +18,15 @@
 									<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
 									<output value="Ok. What type of taxi you need?"/>
 
+									<sample>
+										<item value="passenger"/>
+										<item value="cargo"/>
+									</sample>
+									
 									<pattern name="taxiType" value="(passenger|cargo)"/>
 									<input id="taxi_type" pattern="$taxiType">
-										<sample>
-											<item value="passenger"/>
-											<item value="cargo"/>
-										</sample>
-
+										<var name="taxiType" value="$taxiType" scope="context"/>
 										<context id="taxi_passenger" if="$taxiType == 'passenger'">
-											<var name="taxiType" value="$taxiType" scope="context"/>
 											<output value="Will children with you?"/>
 											<pattern name="childrenAre" value="(yes|no)"/>
 											<input id="children_are" pattern="$childrenAre">
