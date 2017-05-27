@@ -25,8 +25,8 @@
 									<input id="taxi_type" pattern="$taxiType"/>
 									<var name="taxiTypeSel" value="$taxiType" scope="context"/>
 									<sample>
-										<item value="passenger"/>
-										<item value="cargo"/>
+										<item>passenger</item>
+										<item>cargo</item>
 									</sample>
 
 									<output value="Your choice: $taxiTypeSel" if="$taxiTypeSel == 'passenger'"/>
