@@ -26,8 +26,7 @@
 										<item>passenger</item>
 										<item>cargo</item>
 									</sample>
-									<var name="taxiTypeSel" value="$Text" scope="context"/>
-									<output value="Your choice - $taxiTypeSel"/>
+									<output value="Your choice - $Text"/>
 								</context>
 								
 								
