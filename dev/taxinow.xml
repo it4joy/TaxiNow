@@ -1,29 +1,29 @@
 <context>
-	<input id="phone" pattern="/start $Text">
-		<context id="number-use" if="full($Text)">
-			<var name="userPhoneNum" value="$Text" scope="user"/>
-			<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
+	<input id="phone" pattern="$Text">
+		<var name="userPhoneNum" value="$Text" scope="context"/>
+		<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
 
+		<context id="number_use" if="full($Text)">
 			<output value="Where are you?"/>
-			<input id="start-point" pattern="$Text">
-				<context id="start-point-use">
+			<input id="start_point" pattern="$Text">
+				<context id="start_point_use">
 					<var name="StartPoint" value="$Text" scope="context"/>
 					<output value="Ok. And where would you like to go?" if="full($Text)"/>
 					
-					<input id="end-point" pattern="$Text">
+					<input id="end_point" pattern="$Text">
 						<var name="endPoint" value="$Text" scope="context"/>
 						<output value="Ok. What type of taxi you need?" if="full($Text)"/>
 
 						<var name="finMsg" value="Thanks, I will send you a message with info about auto."/>
 
-						<context id="end-point-use">
+						<context id="end_point_use">
 							<sample>
 								<item value="passenger"/>
 								<item value="cargo"/>
 							</sample>
 							<pattern name="taxiType" value="(passenger|cargo)"/>
-							<input id="taxi-type" pattern="$taxiType">
-								<context id="taxi-passenger" if="full($taxiType) and $taxiType == 'passenger'">
+							<input id="taxi_type" pattern="$taxiType">
+								<context id="taxi_passenger" if="full($taxiType) and $taxiType == 'passenger'">
 									<var name="taxiType" value="$taxiType" scope="context"/>
 									<output value="Will children with you?"/>
 									<sample>
@@ -31,12 +31,12 @@
 										<item value="no"/>
 									</sample>
 									<pattern name="childrenAre" value="(yes|no)"/>
-									<input id="children-are" pattern="$childrenAre">
-										<context id="children-yes" if="$childrenAre == 'yes'">
+									<input id="children_are" pattern="$childrenAre">
+										<context id="children_yes" if="$childrenAre == 'yes'">
 											<var name="children" value="$childrenAre" scope="context"/>
 											<output value="How many and what is their age?"/>
 
-											<input id="children-data" pattern="$Text">
+											<input id="children_data" pattern="$Text">
 												<context id="children-data-use">
 													<var name="childrenData" value="$Text" scope="context"/>
 													<output value="$finMsg"/>
@@ -44,13 +44,13 @@
 											</input>
 										</context>
 
-										<context id="children-no" if="$childrenAre == 'no'">
+										<context id="children_no" if="$childrenAre == 'no'">
 											<output value="$finMsg"/>
 										</context>
 									</input>
 								</context>
 
-								<context id="taxi-cargo" if="full($taxiType) and $taxiType == 'cargo'">
+								<context id="taxi_cargo" if="full($taxiType) and $taxiType == 'cargo'">
 									<output value="What type of truck you need?"/>
 									<sample>
 										<item value="before 1 tonne"/>
@@ -59,8 +59,8 @@
 										<item value="before 5 tonne"/>
 									</sample>
 									<pattern name="tonnageSel" value="(before 1 tonne|before 2 tonne|before 3.5 tonne|before 5 tonne)"/>
-									<input id="cargo-tonnage" pattern="$tonnageSel">
-										<context id="cargo-tonnage-use">
+									<input id="cargo_tonnage" pattern="$tonnageSel">
+										<context id="cargo_tonnage_use">
 											<var name="tonnage" value="$tonnageSel" scope="context"/>
 											<output value="$finMsg"/>
 										</context>
@@ -69,13 +69,13 @@
 							</input>
 						</context>
 						
-						<context id="end-point-no" if="empty($Text)">
+						<context id="end_point_no" if="empty($Text)">
 							<output value="Where would you like to go?"/>
 						</context>
 					</input>
 				</context>
 
-				<context id="start-point-no" if="empty($Text)">
+				<context id="start_point_no" if="empty($Text)">
 					<output value="Please, write me where are you."/>
 				</context>
 			</input>
