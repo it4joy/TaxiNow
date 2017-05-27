@@ -1,9 +1,9 @@
 <context>
 	<input id="phone" pattern="/start $Text">
-		<var name="userPhoneNum" value="$Text" scope="context"/>
-		<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
-
 		<context id="number-use" if="full($Text)">
+			<var name="userPhoneNum" value="$Text" scope="user"/>
+			<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
+
 			<output value="Where are you?"/>
 			<input id="start-point" pattern="$Text">
 				<context id="start-point-use">
