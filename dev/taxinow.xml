@@ -68,9 +68,11 @@
 					<![CDATA[
 						var arr = [];
 						arr.push($startPoint, $endPoint);
-						if ($taxiTypeSel != "" && $childrenData != "" || $tonnage != "") {
-							arr.push($taxiTypeSel, $childrenData, $tonnage);
-						}
+						if ($taxiTypeSel != "" && $childrenData != "") {
+							arr.push($taxiTypeSel, $childrenData);
+						} else if ($taxiTypeSel != "" && $tonnage != "") {
+							arr.push($taxiTypeSel, $tonnage);
+						} else {}
 						arr;
 					]]>
 				</script>
