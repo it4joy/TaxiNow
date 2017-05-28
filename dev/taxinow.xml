@@ -48,7 +48,7 @@
 										<context id="taxi_cargo" if='$taxiTypeSel == "c"'>
 											<output value="What type of truck you need? 1, 2, 3.5, 5 (tonne)"/>
 
-											<input pattern="(1|2|3.5|5)">
+											<input pattern="$Text">
 												<var name="tonnage" value="$Text" scope="context"/>
 												<context id="final_msg"/>
 											</input>
