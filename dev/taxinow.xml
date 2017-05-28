@@ -39,6 +39,7 @@
 														<context id="final_msg"/>
 														
 														<get url="https://placeholdit.imgix.net/~text" var="resultAuto">
+															<header name="Content-Type" value="image/png"/>
 															<param name="txtsize" value="22"/>
 															<param name="txt" value="250x150"/>
 															<param name="w" value="250"/>
