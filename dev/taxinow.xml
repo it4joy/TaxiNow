@@ -49,7 +49,7 @@
 											<output value="What type of truck you need? 1, 2, 3.5, 5 (tonne)"/>
 
 											<input pattern="(1|2|3.5|5)">
-												<var name="tonnage" value="$Text"/>
+												<var name="tonnage" value="$Text" scope="context"/>
 												<context id="final_msg"/>
 											</input>
 										</context>
@@ -73,7 +73,7 @@
 						} else if ($taxiTypeSel == "c" && $tonnage != "") {
 							arr.push("cargo", $tonnage);
 						} else {}
-						var str = arr.join(' ;');
+						var str = arr.join('; ');
 						str;
 					]]>
 				</script>
