@@ -28,7 +28,7 @@
 										<context id="taxi_passenger" if='$taxiTypeSel == "p"'>
 											<output value="Will children with you? Yes - y, No - n"/>
 
-											<input id="children_are" pattern="(y|n)">
+											<input id="children_are" pattern="(yes|no)">
 												<var name="childrenAreVal" value="$Text" scope="context"/>
 
 												<context id="children_yes" if='$childrenAreVal == "y"'>
