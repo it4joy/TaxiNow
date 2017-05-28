@@ -37,14 +37,6 @@
 													<input id="children_data" pattern="$Text">
 														<var name="childrenData" value="$Text"/>
 														<context id="final_msg"/>
-														
-														<get url="https://placeholdit.imgix.net/~text" var="resultAuto">
-															<param name="txtsize" value="22"/>
-															<param name="txt" value="250x150"/>
-															<param name="w" value="250"/>
-															<param name="h" value="150"/>
-														</get>
-														<output value="get($resultAuto)"/>
 													</input>
 												</context>
 												
@@ -71,6 +63,29 @@
 		</context>
 		
 		<context id="final_msg">
+			<var name="orderArr">
+				<script>
+					<![CDATA[
+						var arr = [];
+						arr.push($startPoint, $endPoint);
+						if ($taxiTypeSel != "" && $childrenData != "" || $tonnage != "") {
+							arr.push($taxiTypeSel, $childrenData, $tonnage);
+						}
+						arr;
+					]]>
+				</script>
+			</var>
+
+			<post url="http://examples.anyquotes.ru/zensolutions/handler.php" var="order">
+				<header name="Content-Type" value="application/json"/>
+				<body>
+					<![CDATA[
+						var test = {
+							"order_data" : "$orderArr"
+						}
+					]]>
+				</body>
+			</post>
 			<output value="Thanks, I will send you a message with info about auto."/>
 		</context>
 	</input>
