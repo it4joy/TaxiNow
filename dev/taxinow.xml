@@ -68,10 +68,10 @@
 					<![CDATA[
 						var arr = [];
 						arr.push($startPoint + "-" + $endPoint);
-						if ($childrenAreVal == "n") {
-							arr.push("passenger");
-						} else if ($taxiTypeSel == "p" && $childrenData != "") {
+						if ($taxiTypeSel == "p" && $childrenAreVal == "y") {
 							arr.push("passenger", "children: " + $childrenData);
+						} else if ($taxiTypeSel == "p" && $childrenAreVal == "n") {
+							arr.push("passenger");
 						} else if ($taxiTypeSel == "c" && $tonnage != "") {
 							arr.push("cargo", $tonnage + "t");
 						} else {}
