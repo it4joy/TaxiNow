@@ -45,7 +45,7 @@
 															<param name="w" value="250"/>
 															<param name="h" value="150"/>
 														</get>
-														<output value="$resultAuto"/>
+														<output value="get($resultAuto)"/>
 													</input>
 												</context>
 												
