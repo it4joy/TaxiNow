@@ -69,10 +69,12 @@
 						var arr = [];
 						arr.push($startPoint, $endPoint);
 						if ($taxiTypeSel == "p" && $childrenData != "") {
-							arr.push("passenger", $childrenData);
+							arr.push("passenger", "children: " + $childrenData);
 						} else if ($taxiTypeSel == "c" && $tonnage != "") {
-							arr.push("cargo", $tonnage);
-						} else {}
+							arr.push("cargo", $tonnage + "t");
+						} else {
+							arr.push($taxiTypeSel);
+						}
 						var str = arr.join('; ');
 						str;
 					]]>
