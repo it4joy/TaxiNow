@@ -7,16 +7,13 @@ $headers  = "MIME-Version: 1.0 \r\n";
 $headers .= "Content-type: text/html; charset=utf-8 \r\n";
 $headers .= "From: TaxiNow \r\n";
 
-//$success_page = "http://xn--90amdhskf9a2c6b.xn--p1ai/success.php";
-//$error_page = "http://xn--90amdhskf9a2c6b.xn--p1ai/failure.php";
-
 if( !empty($_POST) ) {
-	$order = json_decode( $_POST['test'], true );
+	$orderFromBot = json_decode( $_POST['order'], true );
 	$msg = "
 		<html><body>
-			<p><b>Детали заказа:</b> ".$order."</p>
+			<p><b>Детали заказа:</b> ".$orderFromBot."</p>
 		</body></html>";
-		
+
 	mail($to, $title, $msg, $headers);
 }
 

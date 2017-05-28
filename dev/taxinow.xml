@@ -63,7 +63,7 @@
 		</context>
 		
 		<context id="final_msg">
-			<var name="orderArr">
+			<var name="orderArr" scope="context">
 				<script>
 					<![CDATA[
 						var arr = [];
