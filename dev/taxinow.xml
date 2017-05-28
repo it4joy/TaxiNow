@@ -82,7 +82,7 @@
 				<header name="Content-Type" value="application/json"/>
 				<body>
 					<![CDATA[
-						var test = {
+						{
 							"order_data" : "$orderArr"
 						}
 					]]>
