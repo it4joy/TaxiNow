@@ -69,7 +69,7 @@
 						var arr = [];
 						arr.push($startPoint + "-" + $endPoint);
 						if ($childrenAreVal == "n") {
-							arr.push($taxiTypeSel);
+							arr.push("passenger");
 						} else if ($taxiTypeSel == "p" && $childrenData != "") {
 							arr.push("passenger", "children: " + $childrenData);
 						} else if ($taxiTypeSel == "c" && $tonnage != "") {
