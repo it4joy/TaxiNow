@@ -72,9 +72,10 @@
 							arr.push("passenger", "children: " + $childrenData);
 						} else if ($taxiTypeSel == "c" && $tonnage != "") {
 							arr.push("cargo", $tonnage + "t");
-						} else if ($childrenAreVal == "n") {
-							arr.push($taxiTypeSel);
 						} else {}
+						if ($childrenAreVal == "n") {
+							arr.push($taxiTypeSel);
+						}
 						var str = arr.join('; ');
 						str;
 					]]>
