@@ -40,7 +40,7 @@
 													</input>
 												</context>
 												
-												<!-- <context id="final_msg" if='$childrenAreVal == "n"'/> -->
+												<context id="final_msg" if='$childrenAreVal == "n"'/>
 											</input>
 										</context>
 
