@@ -63,6 +63,7 @@
 		</context>
 		
 		<context id="final_msg">
+			<!-- Preparing the data of order for further handling via server-side scripts -->
 			<var name="orderArr" scope="context">
 				<script>
 					<![CDATA[
@@ -81,7 +82,7 @@
 				</script>
 			</var>
 
-			<output value="Thanks. Your order is: $orderArr. I will send you a message with info about auto."/>
+			<output value="Thanks, I will send you a message with info about auto."/>
 		</context>
 	</input>
 </context>
