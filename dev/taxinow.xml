@@ -37,6 +37,11 @@
 													<input id="children_data" pattern="$Text">
 														<var name="childrenData" value="$Text"/>
 														<context id="final_msg"/>
+														
+														<get url="http://placehold.it/250x150" var="resultAuto">
+															
+														</get>
+														<output value="$resultAuto"/>
 													</input>
 												</context>
 												
