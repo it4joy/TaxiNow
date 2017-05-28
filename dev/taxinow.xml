@@ -38,7 +38,8 @@
 														<var name="childrenData" value="$Text"/>
 														<context id="final_msg"/>
 														
-														<get url="http://placehold.it/" var="resultAuto">
+														<get url="https://placeholdit.imgix.net/" var="resultAuto">
+															<param name="txt" value="230x230"/>
 															<param name="w" value="250"/>
 															<param name="h" value="150"/>
 														</get>
