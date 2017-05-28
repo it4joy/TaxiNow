@@ -3,8 +3,8 @@
 		<context id="start_bot_use">
 			<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
 			
-			<input id="phone_num" pattern="$Number">
-				<var name="userPhoneNum" value="$Number" scope="user"/>
+			<input id="phone_num" pattern="$Text">
+				<var name="userPhoneNum" value="$Text" scope="user"/>
 				
 				<context id="phone_num_use" if="full($userPhoneNum)">
 					<output value="Where are you?"/>
