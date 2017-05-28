@@ -38,8 +38,9 @@
 														<var name="childrenData" value="$Text"/>
 														<context id="final_msg"/>
 														
-														<get url="http://placehold.it/250x150" var="resultAuto">
-															
+														<get url="http://placehold.it/" var="resultAuto">
+															<param name="w" value="250"/>
+															<param name="h" value="150"/>
 														</get>
 														<output value="$resultAuto"/>
 													</input>
