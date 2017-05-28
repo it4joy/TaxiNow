@@ -40,7 +40,7 @@
 													</input>
 												</context>
 												
-												<context id="final_msg" if='$childrenAreVal == "n"'/>
+												<!-- <context id="final_msg" if='$childrenAreVal == "n"'/> -->
 											</input>
 										</context>
 
@@ -72,7 +72,7 @@
 							arr.push("passenger", "children: " + $childrenData);
 						} else if ($taxiTypeSel == "c" && $tonnage != "") {
 							arr.push("cargo", $tonnage + "t");
-						} else if ($childrenData == "") {
+						} else if ($childrenAreVal == "n") {
 							arr.push($taxiTypeSel);
 						} else {}
 						var str = arr.join('; ');
