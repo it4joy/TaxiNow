@@ -67,7 +67,7 @@
 				<script>
 					<![CDATA[
 						var arr = [];
-						arr.push($startPoint, $endPoint);
+						arr.push($startPoint + "-" + $endPoint);
 						if ($taxiTypeSel == "p" && $childrenData != "") {
 							arr.push("passenger", "children: " + $childrenData);
 						} else if ($taxiTypeSel == "c" && $tonnage != "") {
