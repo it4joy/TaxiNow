@@ -74,17 +74,13 @@
 							arr.push($taxiTypeSel, $tonnage);
 						} else {}
 						var str = arr.join(';');
-						str;
+						return str;
 					]]>
 				</script>
 			</var>
 
-			<post url="http://examples.anyquotes.ru/zensolutions/handler.php" var="order">
-				<header name="Content-Type" value="text/plane"/>
-				<body>
-				</body>
-			</post>
-			<output value="Thanks, I will send you a message with info about auto."/>
+			<output value="Thanks. Your order: orderArr"/>
+			<output value="I will send you a message with info about auto."/>
 		</context>
 	</input>
 </context>
