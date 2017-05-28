@@ -3,10 +3,10 @@
 		<context id="start_bot_use">
 			<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
 			
-			<input id="phone" pattern="$Text">
-				<var name="userPhoneNum" value="$Text" scope="user"/>
+			<input id="phone_num" pattern="$Number">
+				<var name="userPhoneNum" value="$Number" scope="user"/>
 				
-				<context id="number_use" if="full($userPhoneNum)">
+				<context id="phone_num_use" if="full($userPhoneNum)">
 					<output value="Where are you?"/>
 					
 					<input id="start_point" pattern="$Text">
@@ -21,15 +21,15 @@
 								<context id="end_point_use" if="full($endPoint)">
 									<output value="Ok. What type of taxi you need? Passenger - p, cargo - c"/>
 
-									<input id="taxi_type" pattern="$Text">
+									<input id="taxi_type" pattern="(p|c)">
 										<var name="taxiTypeSel" value="$Text" scope="context"/>
 
 										<!-- Taxi :: passenger -->
 										<context id="taxi_passenger" if='$taxiTypeSel == "p"'>
 											<output value="Will children with you? Yes - y, No - n"/>
 
-											<input id="children_are" pattern="$Text">
-												<var name="childrenAreVal" value="$Text"/>
+											<input id="children_are" pattern="(y|n)">
+												<var name="childrenAreVal" value="$Text" scope="context"/>
 
 												<context id="children_yes" if='$childrenAreVal == "y"'>
 													<output value="How many and what is their age (for choice of auto chairs)?"/>
