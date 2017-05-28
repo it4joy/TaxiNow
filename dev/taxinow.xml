@@ -74,12 +74,12 @@
 							arr.push($taxiTypeSel, $tonnage);
 						} else {}
 						var str = arr.join(';');
-						return str;
+						str;
 					]]>
 				</script>
 			</var>
 
-			<output value="Thanks. Your order: orderArr"/>
+			<output value="Thanks. Your order: $orderArr"/>
 			<output value="I will send you a message with info about auto."/>
 		</context>
 	</input>
