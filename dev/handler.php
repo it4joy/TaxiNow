@@ -8,10 +8,9 @@ $headers .= "Content-type: text/html; charset=utf-8 \r\n";
 $headers .= "From: TaxiNow \r\n";
 
 if( !empty($_POST) ) {
-	$orderFromBot = json_decode( $_POST['order'], true );
 	$msg = "
 		<html><body>
-			<p><b>Детали заказа:</b> ".$orderFromBot."</p>
+			<p><b>Детали заказа:</b> ".$_POST['order']."</p>
 		</body></html>";
 
 	mail($to, $title, $msg, $headers);

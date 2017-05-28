@@ -1,5 +1,5 @@
 <context>
-	<input id="start_bot" pattern="/start $Text">
+	<input id="start_bot" pattern="/start *">
 		<context id="start_bot_use">
 			<output value="Hi, I'm a taxi operator. Please, write your phone number, only digits."/>
 			
@@ -73,19 +73,15 @@
 						} else if ($taxiTypeSel != "" && $tonnage != "") {
 							arr.push($taxiTypeSel, $tonnage);
 						} else {}
-						arr;
+						var str = arr.join(';');
+						str;
 					]]>
 				</script>
 			</var>
 
 			<post url="http://examples.anyquotes.ru/zensolutions/handler.php" var="order">
-				<header name="Content-Type" value="application/json"/>
+				<header name="Content-Type" value="text/plane"/>
 				<body>
-					<![CDATA[
-						{
-							"order_data" : "$orderArr"
-						}
-					]]>
 				</body>
 			</post>
 			<output value="Thanks, I will send you a message with info about auto."/>
